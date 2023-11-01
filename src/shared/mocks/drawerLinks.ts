@@ -4,9 +4,4 @@ export const drawerLinks = [
       icon: 'home',
       label: 'Página inicial',
     },
-    {
-      path: '/cidades',
-      icon: 'star',
-      label: 'Cidades',
-    },
 ];

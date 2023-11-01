@@ -2,7 +2,7 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 import App from '../App';
 import { AppThemeProvider, DrawerProvider } from '../shared/contexts';
 import { MenuLateral } from '../shared/components';
-import { PaginaInicial } from '../pages';
+import { Dashboard } from '../pages';
 
 export const router = createBrowserRouter([
   {
@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
         <DrawerProvider>
 
           <MenuLateral>
-            <PaginaInicial />
+            <Dashboard/>
           </MenuLateral>
           
         </DrawerProvider>
