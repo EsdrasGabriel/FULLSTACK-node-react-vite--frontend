@@ -4,13 +4,14 @@ import { AppThemeProvider, DrawerProvider } from '../shared/contexts';
 import { MenuLateral } from '../shared/components';
 import { Dashboard } from '../pages';
 
+
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <App />
   },
   {
-    path: '/pagina-inicial',
+    path: '/dashboard',
     element: (
       <AppThemeProvider>
         <DrawerProvider>
@@ -25,6 +26,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '*',
-    element: <Navigate to='pagina-inicial' />,
+    element: <Navigate to='dashboard' />,
   },
 ]);
