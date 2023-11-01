@@ -1,11 +1,11 @@
-import { Button } from "@mui/material"
-import { useAppThemeContext } from "./shared/contexts"
+import { Button } from '@mui/material'
+import { useAppThemeContext } from './shared/contexts'
 
 function App() {
   const { toggleTheme } = useAppThemeContext()
 
   return (
-      <Button variant="contained" color="primary" onClick={toggleTheme}>Toggle Theme</Button>
+      <Button variant='contained' color='primary' onClick={toggleTheme}>Toggle Theme</Button>
   )
 }
 
