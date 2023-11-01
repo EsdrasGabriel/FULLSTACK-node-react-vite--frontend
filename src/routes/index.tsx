@@ -1,14 +1,17 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { Button } from "@mui/material";
+import { AppThemeProvider } from "../shared/contexts";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Button variant="contained" color="primary">Teste</Button>,
+    element: 
+      <AppThemeProvider >
+        <App />,
+      </AppThemeProvider>
   },
   {
     path: "*",
-    element: <Navigate to="/"/>
+    element: <Navigate to="/" />,
   },
 ]);

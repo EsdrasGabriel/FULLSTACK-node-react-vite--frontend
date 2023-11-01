@@ -1,9 +1,11 @@
+import { Button } from "@mui/material"
+import { useAppThemeContext } from "./shared/contexts"
+
 function App() {
+  const { toggleTheme } = useAppThemeContext()
 
   return (
-    <div>
-      Um nome maior para testar a fonte
-    </div>
+      <Button variant="contained" color="primary" onClick={toggleTheme}>Toggle Theme</Button>
   )
 }
 
