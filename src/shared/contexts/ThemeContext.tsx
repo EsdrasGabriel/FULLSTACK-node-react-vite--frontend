@@ -28,7 +28,7 @@ export const AppThemeProvider: React.FC<IAppThemeProviderProps> = ({
 }) => {
   const [themeName, setThemeName] = useState<'light' | 'dark'>('light');
   const toggleTheme = useCallback(() => {
-    setThemeName((oldThemeName) =>
+    setThemeName(oldThemeName =>
       oldThemeName === 'light' ? 'dark' : 'light'
     );
   }, []);

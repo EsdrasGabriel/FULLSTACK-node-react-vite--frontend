@@ -1,10 +1,10 @@
 import { Button } from '@mui/material';
-import { useAppThemeContext } from '../../shared/contexts';
+import { useDrawerContext } from '../../shared/contexts';
 
 export const PaginaInicial = () => {
-  const { toggleTheme } = useAppThemeContext();
+  const { toggleDrawerOpen } = useDrawerContext();
 
   return (
-    <Button variant='contained' color='primary' onClick={toggleTheme}>Toggle Theme</Button>
+    <Button variant='contained' color='primary' onClick={toggleDrawerOpen}>Toggle Drawer</Button>
   );
 };

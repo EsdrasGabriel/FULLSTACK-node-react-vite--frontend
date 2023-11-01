@@ -1,6 +1,6 @@
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 import App from '../App';
-import { AppThemeProvider } from '../shared/contexts';
+import { AppThemeProvider, DrawerProvider } from '../shared/contexts';
 import { MenuLateral } from '../shared/components';
 import { PaginaInicial } from '../pages';
 
@@ -13,9 +13,11 @@ export const router = createBrowserRouter([
     path: '/pagina-inicial',
     element: (
       <AppThemeProvider>
-        <MenuLateral>
-          <PaginaInicial />
-        </MenuLateral>
+        <DrawerProvider>
+          <MenuLateral>
+            <PaginaInicial />
+          </MenuLateral>
+        </DrawerProvider>
       </AppThemeProvider>
     ),
   },
