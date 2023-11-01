@@ -2,7 +2,7 @@ function App() {
 
   return (
     <div>
-      teste
+      Um nome maior para testar a fonte
     </div>
   )
 }
