@@ -14,9 +14,11 @@ export const router = createBrowserRouter([
     element: (
       <AppThemeProvider>
         <DrawerProvider>
+
           <MenuLateral>
             <PaginaInicial />
           </MenuLateral>
+          
         </DrawerProvider>
       </AppThemeProvider>
     ),
