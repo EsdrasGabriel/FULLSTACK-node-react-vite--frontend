@@ -5,4 +5,10 @@ export const drawerLinks = [
       icon: 'home',
       label: 'Dashboard',
     },
+    {
+      id: 2,
+      path: '/pessoas',
+      icon: 'people',
+      label: 'Pessoas',
+    },
 ];

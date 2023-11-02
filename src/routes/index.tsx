@@ -1,31 +1,18 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom';
-import App from '../App';
-import { AppThemeProvider, DrawerProvider } from '../shared/contexts';
-import { MenuLateral } from '../shared/components';
-import { Dashboard } from '../pages';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { 
+  Dashboard,
+  ListOfPeople
+} from '../pages';
 
 
-export const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />
-  },
-  {
-    path: '/dashboard',
-    element: (
-      <AppThemeProvider>
-        <DrawerProvider>
+export const AppRoutes = () => {
+  return (
+      <Routes>
 
-          <MenuLateral>
-            <Dashboard/>
-          </MenuLateral>
-          
-        </DrawerProvider>
-      </AppThemeProvider>
-    ),
-  },
-  {
-    path: '*',
-    element: <Navigate to='dashboard' />,
-  },
-]);
+        <Route path='/*' element={<Navigate to='/dashboard' />}/>
+        <Route path='/dashboard' element={<Dashboard />}/>
+        <Route path='/pessoas' element={<ListOfPeople />}/>
+
+      </Routes>
+  );
+};
