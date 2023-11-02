@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, Skeleton, useTheme } from '@mui/material';
+import { Box, Button, Divider, Icon, Paper, Skeleton, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 interface IDetailingToolsProps {
   textButtonNew?: string;
@@ -44,6 +44,8 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
   byChangingInSaveAndClose
 }) => {
   const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Box
@@ -63,7 +65,11 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           variant='contained'
           onClick={byChangingInSave}
           startIcon={<Icon>save</Icon>}
-        >Salvar</Button> )
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Salvar
+          </Typography>
+        </Button> )
       }
 
       {showLoadingButtonSave &&
@@ -73,17 +79,21 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
         />)
       }
 
-      {(showButtonSaveAndClose && !showLoadingButtonSaveAndClose) &&
+      {(showButtonSaveAndClose && !showLoadingButtonSaveAndClose && !smDown && !mdDown) &&
         (<Button
           color='primary'
           disableElevation
           variant='outlined'
           onClick={byChangingInSaveAndClose}
           startIcon={<Icon>save</Icon>}
-        >Salvar e voltar</Button> )
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Salvar e voltar
+          </Typography>
+        </Button> )
       }
 
-      {showLoadingButtonSaveAndClose &&
+      {(showLoadingButtonSaveAndClose && !smDown && !mdDown) &&
         (<Skeleton 
           width={180}
           height={60}
@@ -97,7 +107,11 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           variant='outlined'
           onClick={byChangingInDelete}
           startIcon={<Icon>delete</Icon>}
-        >Apagar</Button> )
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Apagar
+          </Typography>
+        </Button> )
       }
 
       {showLoadingButtonDelete &&
@@ -107,24 +121,35 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
         />)
       }
 
-      {(showButtonNew && !showLoadingButtonNew) &&
+      {(showButtonNew && !showLoadingButtonNew && !smDown) &&
         (<Button
           color='primary'
           disableElevation
           variant='outlined'
           onClick={byChangingInNew}
           startIcon={<Icon>add</Icon>}
-        >{textButtonNew}</Button> )
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            {textButtonNew}
+          </Typography>
+        </Button> )
       }
 
-      {showLoadingButtonNew &&
+      {(showLoadingButtonNew && !smDown) &&
         (<Skeleton 
           width={109}
           height={60}
         />)
       }
 
-      <Divider variant='middle' orientation='vertical'/>
+      {
+        (
+          showButtonBack && 
+          (showButtonSave || showButtonSaveAndClose || showButtonDelete || showButtonNew)
+        )
+        &&
+        (<Divider variant='middle' orientation='vertical'/>)
+      }
 
       {(showButtonBack && !showLoadingButtonBack) &&
         (<Button
@@ -133,7 +158,11 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           variant='outlined'
           onClick={byChangingInBack}
           startIcon={<Icon>arrow_back</Icon>}
-        >Voltar</Button> )
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Voltar
+          </Typography>
+        </Button> )
       }
 
       {showLoadingButtonBack &&
