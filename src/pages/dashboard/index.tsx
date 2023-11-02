@@ -1,4 +1,4 @@
-import { ToolBar } from '../../shared/components';
+import { DetailingTools, ListingTools } from '../../shared/components';
 import { BaseLayout } from '../../shared/layouts/BaseLayout';
 
 export const Dashboard = () => {
@@ -6,9 +6,7 @@ export const Dashboard = () => {
     <BaseLayout 
       title="Página Inicial" 
       toolbar={
-        <ToolBar 
-          showInputSearch
-        />
+        <DetailingTools />
       }
     >
       Testando

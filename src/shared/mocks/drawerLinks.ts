@@ -1,7 +1,8 @@
 export const drawerLinks = [
     {
-      path: '/pagina-inicial',
+      id: 1,
+      path: '/dashboard',
       icon: 'home',
-      label: 'Página inicial',
+      label: 'Dashboard',
     },
 ];

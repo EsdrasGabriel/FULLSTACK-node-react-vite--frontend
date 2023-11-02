@@ -13,7 +13,7 @@ export const ListItemLink: React.FC<IListItemLinkProps> = ({ label, icon, to , o
 
   const resolvedPath = useResolvedPath(to);
   const match = useMatch({ path: resolvedPath.pathname, end: false });
-
+  
   const handleClick = () => {
     navigate(to);
     onClick?.();

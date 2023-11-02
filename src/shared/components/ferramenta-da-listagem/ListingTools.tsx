@@ -10,7 +10,7 @@ interface IToolBarProps {
   byChangingTextButton?: () => void;
 }
 
-export const ToolBar: React.FC<IToolBarProps> = ({
+export const ListingTools: React.FC<IToolBarProps> = ({
   searchText = '',
   showInputSearch = false,
   byChangingSearchText,
@@ -42,12 +42,12 @@ export const ToolBar: React.FC<IToolBarProps> = ({
       <Box flex={1} display="flex" justifyContent="flex-end">
         {showButtonText && (
           <Button
-          color='primary'
-          disableElevation
-          variant='contained'
-          onClick={byChangingTextButton}
-          endIcon={<Icon>add</Icon>}
-        >{textButton}</Button>
+            color='primary'
+            disableElevation
+            variant='contained'
+            onClick={byChangingTextButton}
+            endIcon={<Icon>add</Icon>}
+          >{textButton}</Button>
         )}
       </Box>
     </Box>
