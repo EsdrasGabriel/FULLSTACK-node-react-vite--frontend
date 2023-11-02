@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, useTheme } from '@mui/material';
+import { Box, Button, Divider, Icon, Paper, Skeleton, useTheme } from '@mui/material';
 
 interface IDetailingToolsProps {
   textButtonNew?: string;
@@ -8,6 +8,12 @@ interface IDetailingToolsProps {
   showButtonDelete?: boolean;
   showButtonSave?: boolean;
   showButtonSaveAndClose?: boolean;
+
+  showLoadingButtonNew?: boolean;
+  showLoadingButtonBack?: boolean;
+  showLoadingButtonDelete?: boolean;
+  showLoadingButtonSave?: boolean;
+  showLoadingButtonSaveAndClose?: boolean;
 
   byChangingInNew?: () => void;
   byChangingInBack?: () => void;
@@ -24,6 +30,12 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
   showButtonDelete = true,
   showButtonSave = true,
   showButtonSaveAndClose = false,
+
+  showLoadingButtonNew = false,
+  showLoadingButtonBack = false,
+  showLoadingButtonDelete = false,
+  showLoadingButtonSave = false,
+  showLoadingButtonSaveAndClose = false,
 
   byChangingInNew,
   byChangingInBack,
@@ -44,7 +56,7 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
       alignItems='center'
       height={theme.spacing(5)} 
     >
-      {showButtonSave &&
+      {(showButtonSave && !showLoadingButtonSave) &&
         (<Button
           color='primary'
           disableElevation
@@ -53,7 +65,15 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           startIcon={<Icon>save</Icon>}
         >Salvar</Button> )
       }
-      {showButtonSaveAndClose &&
+
+      {showLoadingButtonSave &&
+        (<Skeleton 
+          width={109}
+          height={60}
+        />)
+      }
+
+      {(showButtonSaveAndClose && !showLoadingButtonSaveAndClose) &&
         (<Button
           color='primary'
           disableElevation
@@ -62,7 +82,15 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           startIcon={<Icon>save</Icon>}
         >Salvar e voltar</Button> )
       }
-      {showButtonDelete &&
+
+      {showLoadingButtonSaveAndClose &&
+        (<Skeleton 
+          width={180}
+          height={60}
+        />)
+      }
+
+      {(showButtonDelete && !showLoadingButtonDelete) &&
         (<Button
           color='primary'
           disableElevation
@@ -71,7 +99,15 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           startIcon={<Icon>delete</Icon>}
         >Apagar</Button> )
       }
-      {showButtonNew &&
+
+      {showLoadingButtonDelete &&
+        (<Skeleton 
+          width={109}
+          height={60}
+        />)
+      }
+
+      {(showButtonNew && !showLoadingButtonNew) &&
         (<Button
           color='primary'
           disableElevation
@@ -81,9 +117,16 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
         >{textButtonNew}</Button> )
       }
 
+      {showLoadingButtonNew &&
+        (<Skeleton 
+          width={109}
+          height={60}
+        />)
+      }
+
       <Divider variant='middle' orientation='vertical'/>
 
-      {showButtonBack &&
+      {(showButtonBack && !showLoadingButtonBack) &&
         (<Button
           color='primary'
           disableElevation
@@ -91,6 +134,13 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           onClick={byChangingInBack}
           startIcon={<Icon>arrow_back</Icon>}
         >Voltar</Button> )
+      }
+
+      {showLoadingButtonBack &&
+        (<Skeleton 
+          width={109}
+          height={60}
+        />)
       }
     </Box>
   );
