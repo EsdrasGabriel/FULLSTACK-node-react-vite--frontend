@@ -65,7 +65,7 @@ export const ListOfPeople = () => {
       title='Listagem de pessoas'
       toolbar={
         <ListingTools 
-        showInputSearch
+          showInputSearch
           textButton='Nova'
           searchText={busca}
           byChangingButtonNew={() => navigate('/pessoas/detalhe/nova')}
@@ -104,25 +104,25 @@ export const ListOfPeople = () => {
           )}
 
           <TableFooter>
-                {isLoading &&
-                  <TableRow>
-                    <TableCell colSpan={3}>
-                        <LinearProgress variant='indeterminate'/>
-                    </TableCell>
-                  </TableRow>
-                }
-                {(totalCount > 0 && totalCount > Environment.ROW_LIMIT) &&
-                  <TableRow>
-                    <TableCell colSpan={3}>
-                      <Pagination 
-                        color="primary" 
-                        page={pagina}
-                        count={Math.ceil(totalCount / Environment.ROW_LIMIT)}
-                        onChange={(_, newPage) => setSearchParams({ busca, pagina: newPage.toString() }, { replace: true })}
-                        />
-                    </TableCell>
-                  </TableRow>
-                }
+            {isLoading &&
+              <TableRow>
+                <TableCell colSpan={3}>
+                    <LinearProgress variant='indeterminate'/>
+                </TableCell>
+              </TableRow>
+            }
+            {(totalCount > 0 && totalCount > Environment.ROW_LIMIT) &&
+              <TableRow>
+                <TableCell colSpan={3}>
+                  <Pagination 
+                    color="primary" 
+                    page={pagina}
+                    count={Math.ceil(totalCount / Environment.ROW_LIMIT)}
+                    onChange={(_, newPage) => setSearchParams({ busca, pagina: newPage.toString() }, { replace: true })}
+                    />
+                </TableCell>
+              </TableRow>
+            }
           </TableFooter>
         </Table>
       </TableContainer>
