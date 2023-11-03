@@ -137,6 +137,18 @@
       "nomeCompleto": "lucas Silva",
       "email": "lucassilva@gmail.com",
       "cidadeId": 1
+    },
+    {
+      "id": 27,
+      "nomeCompleto": "José de Souza",
+      "email": "jose@gmail.com",
+      "cidadeId": "4"
+    },
+    {
+      "nomeCompleto": "José",
+      "email": "jose@gmail.com",
+      "cidadeId": "1",
+      "id": 28
     }
   ]
 }

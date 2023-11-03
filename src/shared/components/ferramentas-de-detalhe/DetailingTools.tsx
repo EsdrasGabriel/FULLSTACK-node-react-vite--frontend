@@ -41,7 +41,7 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
   whenClickInBack,
   whenClickInDelete,
   whenClickInSave,
-  whenClickInSaveAndClose
+  whenClickInSaveAndClose,
 }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
