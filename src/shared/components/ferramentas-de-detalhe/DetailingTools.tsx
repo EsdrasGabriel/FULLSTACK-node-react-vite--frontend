@@ -15,11 +15,11 @@ interface IDetailingToolsProps {
   showLoadingButtonSave?: boolean;
   showLoadingButtonSaveAndClose?: boolean;
 
-  byChangingInNew?: () => void;
-  byChangingInBack?: () => void;
-  byChangingInDelete?: () => void;
-  byChangingInSave?: () => void;
-  byChangingInSaveAndClose?: () => void;
+  whenClickInNew?: () => void;
+  whenClickInBack?: () => void;
+  whenClickInDelete?: () => void;
+  whenClickInSave?: () => void;
+  whenClickInSaveAndClose?: () => void;
 }
 
 export const DetailingTools: React.FC<IDetailingToolsProps> = ({
@@ -37,11 +37,11 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
   showLoadingButtonSave = false,
   showLoadingButtonSaveAndClose = false,
 
-  byChangingInNew,
-  byChangingInBack,
-  byChangingInDelete,
-  byChangingInSave,
-  byChangingInSaveAndClose
+  whenClickInNew: byChangingInNew,
+  whenClickInBack: byChangingInBack,
+  whenClickInDelete: byChangingInDelete,
+  whenClickInSave: byChangingInSave,
+  whenClickInSaveAndClose: byChangingInSaveAndClose
 }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));

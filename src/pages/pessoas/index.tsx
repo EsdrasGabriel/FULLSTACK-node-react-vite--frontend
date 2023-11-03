@@ -66,9 +66,10 @@ export const ListOfPeople = () => {
       title='Listagem de pessoas'
       toolbar={
         <ListingTools 
+        showInputSearch
           textButton='Nova'
-          showInputSearch
           searchText={busca}
+          byChangingButtonNew={() => navigate('/pessoas/detalhe/nova')}
           byChangingSearchText={text => setSearchParams({ busca: text, pagina: '1' }, { replace: true })}
         />
       }

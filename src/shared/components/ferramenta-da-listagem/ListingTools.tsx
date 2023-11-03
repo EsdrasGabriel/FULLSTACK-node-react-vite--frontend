@@ -9,7 +9,7 @@ interface IToolBarProps {
   byChangingSearchText?: (newText: string) => void;
   textButton?: string;
   showButtonText?: boolean;
-  byChangingTextButton?: () => void;
+  byChangingButtonNew?: () => void;
 }
 
 export const ListingTools: React.FC<IToolBarProps> = ({
@@ -18,7 +18,7 @@ export const ListingTools: React.FC<IToolBarProps> = ({
   byChangingSearchText,
   textButton = 'Nova',
   showButtonText = true,
-  byChangingTextButton
+  byChangingButtonNew: byChangingTextButton
 }) => {
   const theme = useTheme();
 

@@ -3,6 +3,7 @@ import {
   Dashboard,
   ListOfPeople
 } from '../pages';
+import { PeopleDetail } from '../pages';
 
 
 export const AppRoutes = () => {
@@ -10,9 +11,11 @@ export const AppRoutes = () => {
       <Routes>
 
         <Route path='/*' element={<Navigate to='/dashboard' />}/>
+
         <Route path='/dashboard' element={<Dashboard />}/>
+
         <Route path='/pessoas' element={<ListOfPeople />}/>
-        <Route path='/pessoas/detalhe/:id' element={<p>Detalhe</p>}/>
+        <Route path='/pessoas/detalhe/:id' element={<PeopleDetail />}/>
 
       </Routes>
   );
