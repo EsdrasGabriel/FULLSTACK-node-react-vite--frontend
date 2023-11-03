@@ -10,7 +10,7 @@ import { Environment } from '../../shared/environment';
 
 export const ListOfPeople = () => {
   const [ searchParams, setSearchParams ] = useSearchParams();
-  const { debounce } = useDebounce(3000);
+  const { debounce } = useDebounce(2000);
 
   const navigate = useNavigate();
 
