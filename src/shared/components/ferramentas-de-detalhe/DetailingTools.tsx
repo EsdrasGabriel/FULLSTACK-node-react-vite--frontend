@@ -37,11 +37,11 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
   showLoadingButtonSave = false,
   showLoadingButtonSaveAndClose = false,
 
-  whenClickInNew: byChangingInNew,
-  whenClickInBack: byChangingInBack,
-  whenClickInDelete: byChangingInDelete,
-  whenClickInSave: byChangingInSave,
-  whenClickInSaveAndClose: byChangingInSaveAndClose
+  whenClickInNew,
+  whenClickInBack,
+  whenClickInDelete,
+  whenClickInSave,
+  whenClickInSaveAndClose
 }) => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
@@ -63,7 +63,7 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           color='primary'
           disableElevation
           variant='contained'
-          onClick={byChangingInSave}
+          onClick={whenClickInSave}
           startIcon={<Icon>save</Icon>}
         >
           <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
@@ -84,7 +84,7 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           color='primary'
           disableElevation
           variant='outlined'
-          onClick={byChangingInSaveAndClose}
+          onClick={whenClickInSaveAndClose}
           startIcon={<Icon>save</Icon>}
         >
           <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
@@ -105,7 +105,7 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           color='primary'
           disableElevation
           variant='outlined'
-          onClick={byChangingInDelete}
+          onClick={whenClickInDelete}
           startIcon={<Icon>delete</Icon>}
         >
           <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
@@ -126,7 +126,7 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           color='primary'
           disableElevation
           variant='outlined'
-          onClick={byChangingInNew}
+          onClick={whenClickInNew}
           startIcon={<Icon>add</Icon>}
         >
           <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
@@ -156,7 +156,7 @@ export const DetailingTools: React.FC<IDetailingToolsProps> = ({
           color='primary'
           disableElevation
           variant='outlined'
-          onClick={byChangingInBack}
+          onClick={whenClickInBack}
           startIcon={<Icon>arrow_back</Icon>}
         >
           <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
