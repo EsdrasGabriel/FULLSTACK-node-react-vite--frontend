@@ -201,6 +201,10 @@
     {
       "nome": "Santa Maria",
       "id": 8
+    },
+    {
+      "nome": "Barueri",
+      "id": 9
     }
   ],
   "auth": {
