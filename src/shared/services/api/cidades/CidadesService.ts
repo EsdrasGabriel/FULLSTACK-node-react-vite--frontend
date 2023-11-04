@@ -3,7 +3,7 @@ import { Api } from '../axios-config';
 
 export interface ICitiesListing {
   id: number;
-  nome: number;
+  nome: string;
 }
 export interface ICitiesDetail {
   id: number;

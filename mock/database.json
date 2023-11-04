@@ -4,7 +4,7 @@
       "id": 3,
       "nomeCompleto": "Carlos Pereira",
       "email": "carlossilva@gmail.com",
-      "cidadeId": 1
+      "cidadeId": 2
     },
     {
       "id": 5,
@@ -161,6 +161,12 @@
       "email": "jorginho@gmail.com",
       "cidadeId": "2",
       "id": 30
+    },
+    {
+      "nomeCompleto": "Cleitin do Grau",
+      "email": "cleitin157@gmail.com",
+      "cidadeId": 1,
+      "id": 31
     }
   ],
   "cidades": [

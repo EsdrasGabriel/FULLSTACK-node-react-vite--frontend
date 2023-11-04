@@ -5,8 +5,8 @@ import * as yup from 'yup';
 
 import { PessoasService } from '../../../shared/services/api/pessoas/PessoasService';
 import { VTextField, VForm, useVForm, IVFormErrors } from '../../../shared/forms';
+import { DetailingTools, AutoCompleteCities } from '../../../shared/components';
 import { BaseLayout } from '../../../shared/layouts/BaseLayout';
-import { DetailingTools } from '../../../shared/components';
 
 interface IFormData {
   nomeCompleto: string;
@@ -49,7 +49,7 @@ export const PeopleDetail: React.FC = () => {
       formRef.current?.setData({
         nomeCompleto: '',
         email: '',
-        cidadeId: '',
+        cidadeId: undefined,
       });
     }
   }, [id]);
@@ -93,6 +93,8 @@ export const PeopleDetail: React.FC = () => {
         }
       })
       .catch((errors: yup.ValidationError) => {
+        setIsLoading(false);
+        
         const validationErrors: IVFormErrors = {};
 
         errors.inner.forEach(error => {
@@ -101,8 +103,6 @@ export const PeopleDetail: React.FC = () => {
           validationErrors[error.path] = error.message;
         });
 
-
-        console.log(validationErrors);
         formRef.current?.setErrors(validationErrors);
       });
   };
@@ -184,12 +184,7 @@ export const PeopleDetail: React.FC = () => {
 
             <Grid container item direction='row' spacing={2}>
               <Grid item xs={12} sm={12} md={6} lg={4} xl={2}>
-                <VTextField 
-                  fullWidth
-                  label='Cidade'
-                  name='cidadeId'
-                  disabled={isLoading}
-                />
+                <AutoCompleteCities isExternalLoading={isLoading}/>
               </Grid>
             </Grid>
             
