@@ -202,5 +202,8 @@
       "nome": "Santa Maria",
       "id": 8
     }
-  ]
+  ],
+  "auth": {
+    "accessToken": "aaaaaaaaaaaaa.bbbbbbbbbbbbbbbb.cccccccccccc"
+  }
 }
