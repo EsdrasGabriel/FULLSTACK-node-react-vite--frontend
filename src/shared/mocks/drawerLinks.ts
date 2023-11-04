@@ -11,4 +11,10 @@ export const drawerLinks = [
       icon: 'people',
       label: 'Pessoas',
     },
+    {
+      id: 3,
+      path: '/cidades',
+      icon: 'location_city',
+      label: 'Cidades',
+    },
 ];

@@ -2,19 +2,19 @@ import { useEffect, useMemo, useState } from 'react';
 import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from '@mui/material';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { IPeopleListing, PessoasService } from '../../shared/services/api/pessoas/PessoasService';
+import { ICitiesListing, CidadesService } from '../../shared/services/api/cidades/CidadesService';
 import { BaseLayout } from '../../shared/layouts/BaseLayout';
 import { ListingTools } from '../../shared/components';
 import { useDebounce } from '../../shared/hooks';
 import { Environment } from '../../shared/environment';
 
-export const ListOfPeople = () => {
+export const ListOfCities = () => {
   const [ searchParams, setSearchParams ] = useSearchParams();
-  const { debounce } = useDebounce(2000);
+  const { debounce } = useDebounce();
 
   const navigate = useNavigate();
 
-  const [rows, setRows] = useState<IPeopleListing[]>([]);
+  const [rows, setRows] = useState<ICitiesListing[]>([]);
   const [totalCount, setTotalCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
@@ -29,7 +29,7 @@ export const ListOfPeople = () => {
     setIsLoading(true);
 
     debounce(() => {
-      PessoasService.getAll(pagina, busca)
+      CidadesService.getAll(pagina, busca)
         .then((result) => {
           setIsLoading(false);
           if (result instanceof Error) {
@@ -44,7 +44,7 @@ export const ListOfPeople = () => {
 
   const handleDelete = (id: number) => {
     if (confirm('Realmente deseja apagar ?')) {
-      PessoasService.deleteById(id)
+      CidadesService.deleteById(id)
         .then(result => {
           if (result instanceof Error) {
             alert(result.message);
@@ -62,13 +62,13 @@ export const ListOfPeople = () => {
 
   return (
     <BaseLayout 
-      title='Listagem de pessoas'
+      title='Listagem de cidades'
       toolbar={
         <ListingTools 
           showInputSearch
           textButton='Nova'
           searchText={busca}
-          byChangingButtonNew={() => navigate('/pessoas/detalhe/nova')}
+          byChangingButtonNew={() => navigate('/cidades/detalhe/nova')}
           byChangingSearchText={text => setSearchParams({ busca: text, pagina: '1' }, { replace: true })}
         />
       }
@@ -78,23 +78,21 @@ export const ListOfPeople = () => {
           <TableHead>
             <TableRow>
               <TableCell width={100}>Ações</TableCell>
-              <TableCell>Nome completo</TableCell>
-              <TableCell>Email</TableCell>
+              <TableCell>Nome</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(({id, nomeCompleto, email}) => (
+            {rows.map(({id, nome}) => (
               <TableRow key={id}>
                 <TableCell>
                   <IconButton size='small' onClick={() => handleDelete(id)}>
                     <Icon>delete</Icon>
                   </IconButton>
-                  <IconButton size='small' onClick={() => navigate(`/pessoas/detalhe/${id}`)}>
+                  <IconButton size='small' onClick={() => navigate(`/cidades/detalhe/${id}`)}>
                     <Icon>edit</Icon>
                   </IconButton>
                 </TableCell>
-                <TableCell>{nomeCompleto}</TableCell>
-                <TableCell>{email}</TableCell>
+                <TableCell>{nome}</TableCell>
             </TableRow>
             ))}
           </TableBody>

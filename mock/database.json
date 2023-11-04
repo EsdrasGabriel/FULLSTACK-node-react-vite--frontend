@@ -162,5 +162,39 @@
       "cidadeId": "2",
       "id": 30
     }
+  ],
+  "cidades": [
+    {
+      "id": 1,
+      "nome": "Surubim-PE"
+    },
+    {
+      "id": 2,
+      "nome": "Vertentes"
+    },
+    {
+      "id": 3,
+      "nome": "Recife"
+    },
+    {
+      "id": 4,
+      "nome": "Olinda"
+    },
+    {
+      "id": 5,
+      "nome": "São Paulo"
+    },
+    {
+      "nome": "Vertente do Lério",
+      "id": 6
+    },
+    {
+      "nome": "Lágoa da Vaca",
+      "id": 7
+    },
+    {
+      "nome": "Santa Maria",
+      "id": 8
+    }
   ]
 }

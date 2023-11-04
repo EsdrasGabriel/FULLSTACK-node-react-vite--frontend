@@ -1,9 +1,11 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { 
   Dashboard,
-  ListOfPeople
+  ListOfPeople,
+  PeopleDetail,
+  ListOfCities,
+  CitiesDetail
 } from '../pages';
-import { PeopleDetail } from '../pages';
 
 
 export const AppRoutes = () => {
@@ -16,6 +18,9 @@ export const AppRoutes = () => {
 
         <Route path='/pessoas' element={<ListOfPeople />}/>
         <Route path='/pessoas/detalhe/:id' element={<PeopleDetail />}/>
+
+        <Route path='/cidades' element={<ListOfCities />}/>
+        <Route path='/cidades/detalhe/:id' element={<CitiesDetail />}/>
 
       </Routes>
   );
