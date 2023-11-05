@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import * as yup from 'yup';
 import { Box, Button, Card, CardActions, CardContent, CircularProgress, TextField, Typography } from '@mui/material';
+import * as yup from 'yup';
 
 import { useAuthContext } from '../../contexts/AuthContext';
-import { useDebounce } from '../../hooks';
 
 interface ILoginProps {
   children: React.ReactNode
