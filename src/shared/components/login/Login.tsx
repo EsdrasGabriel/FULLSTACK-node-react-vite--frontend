@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { Box, Button, Card, CardActions, CardContent, CircularProgress, TextField, Typography } from '@mui/material';
 
 import { useAuthContext } from '../../contexts/AuthContext';
+import { useDebounce } from '../../hooks';
 
 interface ILoginProps {
   children: React.ReactNode
@@ -15,13 +16,14 @@ const loginSchema = yup.object().shape({
 
 export const Login: React.FC<ILoginProps> = ({ children }) => {
   const { isAuthenticated, login } = useAuthContext();
-
+  
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
+  const [ reload, setReload ] = useState<boolean>(false);
 
-  const [ email, setEmail ] = useState<string>();
-  const [ password, setPassword ] = useState<string>();
-  const [ emailError, setEmailError ] = useState<string>();
   const [ passwordError, setPasswordError ] = useState<string>();
+  const [ emailError, setEmailError ] = useState<string>();
+  const [ password, setPassword ] = useState<string>();
+  const [ email, setEmail ] = useState<string>();
 
   const handleSubmit = () => {
     setIsLoading(true);
@@ -29,6 +31,7 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
     loginSchema
       .validate({ email, password }, { abortEarly: false })
       .then(validateData => {
+        setReload(true);
         login(validateData.email, validateData.password)
           .then(() => {
             setIsLoading(false);
@@ -46,12 +49,17 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
       });
   };
 
+  useEffect(() => {
+    if (reload) {
+      window.location.reload();
+    }
+  }, [reload]);
+
   if (isAuthenticated) {
     return (
       <>{children}</>
     );
   }
-
 
   return (
     <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center'>
