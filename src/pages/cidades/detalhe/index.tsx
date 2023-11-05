@@ -19,6 +19,7 @@ const formValidationSchema: yup.ObjectSchema<IFormData> = yup.object().shape({
 export const CitiesDetail: React.FC = () => {
   const { formRef, save, saveAndClose, isSaveAndClose } = useVForm();
   const { id = 'nova' } = useParams<'id'>();
+  console.log(id);
   const navigate = useNavigate();
 
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
@@ -31,7 +32,6 @@ export const CitiesDetail: React.FC = () => {
       CidadesService.getById(Number(id))
         .then((result) => {
           setIsLoading(false);
-
           if (result instanceof Error) {
             alert(result.message);
             navigate('/cidades');
@@ -107,7 +107,6 @@ export const CitiesDetail: React.FC = () => {
       CidadesService.deleteById(id)
         .then(result => {
           setIsLoading(false);
-
           if (result instanceof Error) {
             alert(result.message);
           } else {

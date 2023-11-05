@@ -8,12 +8,12 @@ type TAutoCompleteOption = {
   id: number;
   label: string;
 }
-interface IAutoCompleteCitiesProps {
+interface IAutoCompleteCityProps {
   isExternalLoading?: boolean;
 }
 
-export const AutoCompleteCities: React.FC<IAutoCompleteCitiesProps> = ({ isExternalLoading = false }) => {
-  const { registerField, fieldName, defaultValue, error, clearError } = useField('cidadeId');
+export const AutoCompleteCities: React.FC<IAutoCompleteCityProps> = ({ isExternalLoading = false }) => {
+  const { fieldName, registerField, defaultValue, error, clearError } = useField('cidadeId');
 
   const [ selectedId, setSelectedId ] = useState<number | undefined>(defaultValue);
 
@@ -35,13 +35,15 @@ export const AutoCompleteCities: React.FC<IAutoCompleteCitiesProps> = ({ isExter
     setIsLoading(true);
 
     debounce(() => {
-      CidadesService.getAll(1, search)
+      CidadesService.getAll(1 , search)
         .then((result) => {
           setIsLoading(false);
+
           if (result instanceof Error) {
-            // alert(result.message);
+            alert(result.message);
           } else {
-            setOptions(result.data.map(({id, nome}) => ({ id: id, label: nome })));
+
+            setOptions(result.data.map((data) => ({ id: data.id, label: data.nome })));
           }
         });
     });
@@ -51,6 +53,8 @@ export const AutoCompleteCities: React.FC<IAutoCompleteCitiesProps> = ({ isExter
     if (!selectedId) return null;
 
     const selectedOption = options.find(option => option.id === selectedId);
+
+    if (!selectedOption) return null;
 
     return selectedOption;
   }, [selectedId, options]);

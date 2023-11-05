@@ -20,7 +20,7 @@ type TPeopleWithTotalCount = {
 
 const getAll = async (page = 1, filter = ''): Promise<TPeopleWithTotalCount | Error> => {
   try {
-    const urlRelativa = `/pessoas?_page=${page}&_limit=${Environment.ROW_LIMIT}&nomeCompleto_like=${filter}`;
+    const urlRelativa = `/pessoas?page=${page}&limit=${Environment.ROW_LIMIT}&filter=${filter}`;
 
     const { data, headers } = await Api.get(urlRelativa);
 
@@ -53,9 +53,9 @@ const getById = async (id: number): Promise<IPeopleDetail | Error> => {
 
 const create = async (dados: Omit<IPeopleDetail, 'id'>): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<IPeopleDetail>('/pessoas', dados);
+    const data = await Api.post<IPeopleDetail>('/pessoas', dados);
 
-    if (data) return data.id;
+    if (data) return Number(data.data);
 
     return new Error('Erro ao criar o registro.');
   } catch (err) {

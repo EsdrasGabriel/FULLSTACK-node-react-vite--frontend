@@ -46,9 +46,12 @@ export const Login: React.FC<ILoginProps> = ({ children }) => {
       });
   };
 
-  if (isAuthenticated) return (
-    <>{children}</>
-  );
+  if (isAuthenticated) {
+    return (
+      <>{children}</>
+    );
+  }
+
 
   return (
     <Box width='100vw' height='100vh' display='flex' alignItems='center' justifyContent='center'>

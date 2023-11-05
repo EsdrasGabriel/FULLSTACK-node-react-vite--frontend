@@ -54,19 +54,21 @@ export const PeopleDetail: React.FC = () => {
     }
   }, [id]);
 
-  const handleSave = (data: IFormData) => {
+  const handleSave = async (data: IFormData) => {
     setIsLoading(true);
 
     formValidationSchema
       .validate(data, { abortEarly: false })
       .then((validatedData) => {
         if (id === 'nova') {
+          
           PessoasService
             .create(validatedData)
             .then((result) => {
               setIsLoading(false);
     
               if (result instanceof Error) {
+                console.log(result);
                 alert(result.message);
               } else {
                 if (isSaveAndClose()) {
@@ -81,7 +83,7 @@ export const PeopleDetail: React.FC = () => {
             .updateById(Number(id), { id: Number(id), ...validatedData })
             .then((result) => {
               setIsLoading(false);
-    
+
               if (result instanceof Error) {
                 alert(result.message);
               } else {
